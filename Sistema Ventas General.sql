@@ -1,9 +1,6 @@
 #crear base de datos/;
 create database bd_sistema_ventas_general;
 
-drop database bd_sistema_ventas_general;
-
-
 use bd_sistema_ventas_general;
 
 
@@ -84,9 +81,6 @@ CREATE TABLE tb_proveedor (
     
 );
 
-
-drop table tb_proveedor;
-
 select * from tb_proveedor;
 
 use bd_sistema_ventas_general;	
@@ -104,7 +98,6 @@ estado INT(1) NOT NULL
 
 );
 
-drop table tb_categoria;
 
 ALTER TABLE tb_categoria auto_increment = 0;
 
@@ -123,7 +116,7 @@ show tables;
 
 #crear tabla producto////////////////////;
 
-drop table tb_producto;
+
 CREATE TABLE tb_producto (
 
     idProducto INT AUTO_INCREMENT PRIMARY KEY,
@@ -152,7 +145,7 @@ imagen blob,
 nombre varchar(100)
 )engine=Innodb;
 
-use bd_sistema_ventas_general;	
+
 
 select * from Imagenes;
 
@@ -397,10 +390,10 @@ INSERT INTO tb_categoria (nombreCategoria, estado) VALUES
 
 -- Insertar datos en tb_proveedor
 
-INSERT INTO tb_proveedor (nombre, apellido, identificacion, telefono, direccion, correo, estado) VALUES
-('Proveedor', 'A', 'ID123456', '123456789', 'Calle Falsa 123', 'proveedora@example.com', 1),
-('Proveedor', 'B', 'ID789012', '987654321', 'Avenida Siempre Viva 456', 'proveedorb@example.com', 1),
-('Proveedor', 'C', 'ID345678', '456123789', 'Boulevard de los Sueños Rotos 789', 'proveedorc@example.com', 1);
+INSERT INTO tb_proveedor (nombre, apellido,razonSocial, identificacion, telefono, direccion, correo, estado) VALUES
+('Proveedor', 'A','Razon A', 'ID123456', '123456789', 'Calle Falsa 123', 'proveedora@example.com', 1),
+('Proveedor', 'B','Razon B', 'ID789012', '987654321', 'Avenida Siempre Viva 456', 'proveedorb@example.com', 1),
+('Proveedor', 'C','Razon C', 'ID345678', '456123789', 'Boulevard de los Sueños Rotos 789', 'proveedorc@example.com', 1);
 
 -- Insertar datos en tb_producto
 INSERT INTO tb_producto (nombre, descripcion, idCategoria, idProveedor, ubicacion, cantidad_actual, stock_min, stock_max, precioCosto, precioVenta, porcentajeIgv, precio_total, estado)
@@ -409,7 +402,7 @@ VALUES ('Producto A', 'Descripción del producto A', 1, 2, 'A1', 100, 10, 500, 4
 INSERT INTO tb_producto (nombre, descripcion, idCategoria, idProveedor, ubicacion, cantidad_actual, stock_min, stock_max, precioCosto, precioVenta, porcentajeIgv, precio_total, estado)
 VALUES ('Producto B', 'Descripción del producto B', 2,1, 'B2', 0, 10, 1000, 9.00, 10.00, 18, 57.50, 1);
 
-INSERT INTO tb_producto (nombre, descripcion, idCategoria, ubicacion, cantidad_actual, stock_min, stock_max, precioCosto, precioVenta, porcentajeIgv, precio_total, estado)
+INSERT INTO tb_producto (nombre, descripcion, idCategoria, idProveedor, ubicacion, cantidad_actual, stock_min, stock_max, precioCosto, precioVenta, porcentajeIgv, precio_total, estado)
 VALUES ('Producto C', 'Descripción del producto B', 2,1,  'B2', 500, 10, 1000, 9.00, 10.00, 18, 57.50, 1);
 
 INSERT INTO tb_producto (nombre, descripcion, idCategoria, idProveedor, ubicacion, cantidad_actual, stock_min, stock_max, precioCosto, precioVenta, porcentajeIgv, precio_total, estado)
@@ -469,24 +462,6 @@ SELECT p.idProducto, p.nombre, p.cantidad_actual, p.descripcion, c.nombreCategor
 
 show tables;
 
-use bd_sistema_ventas_general;
-
-
-
-
 
 select * from tb_usuario;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+select * from tb_producto;
